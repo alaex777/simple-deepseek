@@ -1,22 +1,22 @@
-# simple-deepseek
-Simple deepseekAPI client
+# simple-mistral
+Simple Mistral AI API client
 
-## Your simple async and sync DeepSeek client
-![image info](./pictures/deepseek.png)
+## Your simple async and sync Mistral client
+![image info](./pictures/mistral.png)
 
 ## Installation
 
 You can install the package using pip:
 
 ```bash
-pip install simple-deepseek
+pip install simple-mistral
 ```
 
 Or install directly from the source:
 
 ```bash
-git clone https://github.com/yourusername/simple-deepseek.git
-cd simple-deepseek
+git clone https://github.com/alaex777/simple-mistral.git
+cd simple-mistral
 pip install -e .
 ```
 
@@ -29,10 +29,10 @@ pip install -e .
 ## Usage
 
 ```python
-from simple_deepseek import DeepSeekClient
+from simple_mistral import MistralClient
 
 # Initialize the client
-client = DeepSeekClient(api_key="your-api-key")
+client = MistralClient(api_key="your-api-key")
 
 # Synchronous request
 response = client.send_request(

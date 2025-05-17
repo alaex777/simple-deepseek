@@ -1,18 +1,18 @@
 from typing import Optional, Dict, Any
 
 
-class DeepSeekClient:
-    """A client for interacting with the DeepSeek API."""
+class MistralClient:
+    """A client for interacting with the Mistral API."""
     
-    BASE_URL = "https://api.deepseek.com/v1"
+    BASE_URL = "https://api.mistral.ai/v1"
     
     def __init__(self, api_key: str, base_url: Optional[str] = None):
         """
-        Initialize the DeepSeek client.
+        Initialize the Mistral client.
         
         Args:
-            api_key (str): Your DeepSeek API key
-            base_url (str, optional): Custom base URL for the API. Defaults to the official DeepSeek API URL.
+            api_key (str): Your Mistral API key
+            base_url (str, optional): Custom base URL for the API. Defaults to the official Mistral API URL.
         """
         self.api_key = api_key
         self.base_url = base_url or self.BASE_URL
@@ -20,10 +20,19 @@ class DeepSeekClient:
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json"
         }
+        self.default_payload = {
+            "model": "mistral-small-latest",
+        }
+
+    def _parse_response(self, response: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Parse the response from the Mistral API.
+        """
+        return ''.join([choice.get('message').get('content') for choice in response.get('choices')])
     
     def send_request(self, message: str, **kwargs) -> Dict[str, Any]:
         """
-        Send a synchronous request to the DeepSeek API.
+        Send a synchronous request to the Mistral API.
         
         Args:
             message (str): The message to send to the API
@@ -39,16 +48,17 @@ class DeepSeekClient:
 
         payload = {
             "messages": [{"role": "user", "content": message}],
+            **self.default_payload,
             **kwargs
         }
 
         response = requests.post(url, headers=self.headers, json=payload)
         response.raise_for_status()
-        return response.json()
+        return self._parse_response(response=response.json())
 
     async def send_request_async(self, message: str, **kwargs) -> Dict[str, Any]:
         """
-        Send an asynchronous request to the DeepSeek API.
+        Send an asynchronous request to the Mistral API.
         
         Args:
             message (str): The message to send to the API
@@ -64,10 +74,11 @@ class DeepSeekClient:
 
         payload = {
             "messages": [{"role": "user", "content": message}],
+            **self.default_payload,
             **kwargs
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(url, headers=self.headers, json=payload) as response:
                 response.raise_for_status()
-                return await response.json()
+                return self._parse_response(response=await response.json())

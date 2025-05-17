@@ -1,7 +1,12 @@
 from setuptools import setup, find_packages
 
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+
 setup(
-    name="simple-deepseek",
+    name="simple-mistral",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
@@ -10,10 +15,10 @@ setup(
     ],
     author="Alexander Balashov",
     author_email="alaex77@gmail.com",
-    description="A simple async and sync DeepSeek API client",
-    long_description=open("README.md").read(),
+    description="A simple async and sync Mistral API client",
+    long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/alaex77/simple-deepseek",
+    url="https://github.com/alaex77/simple-mistral",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
