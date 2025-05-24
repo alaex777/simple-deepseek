@@ -9,10 +9,6 @@ setup(
     name="simple-mistral",
     version="0.1.0",
     packages=find_packages(),
-    install_requires=[
-        "requests>=2.31.0",
-        "aiohttp>=3.9.0",
-    ],
     author="Alexander Balashov",
     author_email="alaex77@gmail.com",
     description="A simple async and sync Mistral API client",
@@ -24,5 +20,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.9",
 )
