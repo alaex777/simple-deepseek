@@ -7,8 +7,12 @@ with open("README.md", "r") as fh:
 
 setup(
     name="simple-mistral",
-    version="0.1.1",
+    version="0.1.2",
     packages=find_packages(),
+    install_requires=[
+        "requests>=2.31.0",
+        "aiohttp>=3.9.0",
+    ],
     author="Alexander Balashov",
     author_email="alaex777@gmail.com",
     description="A simple async and sync Mistral API client",
