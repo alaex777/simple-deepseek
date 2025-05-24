@@ -7,14 +7,14 @@ with open("README.md", "r") as fh:
 
 setup(
     name="simple-mistral",
-    version="0.1.0",
+    version="0.1.1",
     packages=find_packages(),
     author="Alexander Balashov",
-    author_email="alaex77@gmail.com",
+    author_email="alaex777@gmail.com",
     description="A simple async and sync Mistral API client",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/alaex77/simple-mistral",
+    url="https://github.com/alaex777/simple-mistral",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -22,9 +22,9 @@ pip install -e .
 
 ## Requirements
 
-- Python 3.7+
-- requests
-- aiohttp (for async support)
+- Python 3.9+
+- requests (for sync requests)
+- aiohttp (for async requests)
 
 ## Usage
 
